@@ -84,3 +84,14 @@ rufus.howl()
 rufus.woof()
 const wolf = Wolf('Wolf')
 wolf.howl()
+
+function prefixer(word){
+    const prefixer = word
+    return (name)=>{
+        return `${prefixer} ${name}`
+    }
+}
+const sayHiTo = prefixer('Hello')
+const sayByeTo = prefixer('Bye')
+console.log(sayByeTo('Henri'))
+console.log(sayHiTo('Annie'))
