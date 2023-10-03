@@ -44,3 +44,43 @@ const georges = user("Georges")
 console.log(georges)
 const vladimir = user('Vladimir')
 console.log(vladimir)
+
+function createSigner(secret){
+    const keypair = createKeypair(secret) // Fake function
+    return function (content){
+        return {
+            signed: cryptoSign(content, keypair.privateKey), //fake function
+            publicKey: keypair.publicKey
+        }
+    }
+}
+
+// const sign = createSigner('superSecret')
+// const result = sign("test")
+
+
+// Inheritance with closure scope function
+
+function Wolf(name){
+    const howl = ()=>{
+        console.log(`${name} : awoooo`)
+    }
+    return { howl : howl}
+}
+
+function Dog(name){
+    name = name + ' the dog'
+    const woof = ()=>{
+        console.log(`${name} : woof`)
+    }
+    return {
+        ...Wolf(name),
+        woof: woof
+    }
+}
+console.log("/////")
+const rufus = Dog('Rufus')
+rufus.howl()
+rufus.woof()
+const wolf = Wolf('Wolf')
+wolf.howl()
