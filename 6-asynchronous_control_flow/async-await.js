@@ -20,11 +20,16 @@ async function timeOut(message, time){
     },time)
 }
 Promise.all(data).then((values)=>console.log(values)).catch((err)=>console.log('error',err))
-async function awaitPromise(){
-    const res1 = await timeOut("hello",1000)
-    const res2 = await timeOut("Bye",500)
-    console.log(res1)
-    console.log(res2)
 
+const { readFile} = require('fs')
+const [bigFile, mediumFile, smallFile]= Array.from(Array(3)).fill(__filename)
+const print = (content)=>{
+    console.log(content)
 }
-awaitPromise()
+async function run(){
+        print(await readFile(bigFile))
+        print(await readFile(mediumFile))
+        print(await readFile(smallFile))
+}
+run().catch(err => console.error('ERROR',err))
+
