@@ -1,31 +1,16 @@
-'USE STRICT'
-CONST { JOIN } = REQUIRE('PATH')
-CONST { READFILE, WRITEFILE} = REQUIRE('FS')
-READFILE(__FILENAME,{ENCODING:'UTF8'},(ERR,CONTENTS)=>{
-    IF(ERR) {
-        CONSOLE.ERROR(ERR)
-        RETURN
+'use strict'
+const { pipeline } = require('stream')
+const { join } = require('path')
+const { createReadStream, createWriteStream } = require('fs')
+
+pipeline(
+  createReadStream(__filename),
+  createWriteStream(join(__dirname, 'out.txt')),
+  (err) => {
+    if (err) {
+      console.error(err)
+      return
     }
-    CONSOLE.LOG(CONTENTS)
-})
-
-// WRITEFILESYNC(JOIN(__DIRNAME,'OUT2.TXT'),CONTENT.TOUPPERCASE(),{
-//     FLAG: 'A'
-// })
-
-// VERSION ASYNCHRONOUS
-
-
-
-READFILE(__FILENAME,{ENCODING:'UTF8'},(ERR,CONTENTS)=>{
-    IF(ERR) {
-        CONSOLE.ERROR(ERR)
-        RETURN
-    }
-    CONSOLE.LOG(CONTENTS)
-    WRITEFILE(JOIN(__DIRNAME,'OUT.TXT'),CONTENTS.TOUPPERCASE(),(ERR)=>{
-        IF(ERR){
-            CONSOLE.ERROR(ERR)
-        }
-    })
-})
+    console.log('finished writing')
+  }
+)
