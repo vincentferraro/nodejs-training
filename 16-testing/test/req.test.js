@@ -1,6 +1,6 @@
 'use strict'
 const { test } =require('tap')
-const req = require('../test-harnesses/req.js')
+const req = require('../test-harnesses/req')
 
 test('handle networ errors',({ strictDeepEqual,end})=>{
     req('http://error.com',(err)=>{
