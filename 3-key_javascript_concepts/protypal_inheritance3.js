@@ -43,4 +43,31 @@ const twingo = new Car('twingo')
 twingo.vroum()
 twingo.tuut()
 
-console.log(Object.getPrototypeOf())
+
+
+// inheritance with utils module
+
+
+const utils = require('util')
+
+function Telephone (name){
+    this.name = name
+
+}
+Telephone.prototype.dring=function(){
+    console.log(`${this.name} : driiing driiing`)
+}
+
+function SmartPhone(name){
+    Telephone.call(this,`${name} the smartphone`)
+}
+
+SmartPhone.prototype.biip = function(){
+    console.log(`${this.name} : biiip biiip`)
+}
+
+utils.inherits(SmartPhone, Telephone)
+
+const phone = new SmartPhone('Samsung')
+phone.dring()
+phone.biip()
