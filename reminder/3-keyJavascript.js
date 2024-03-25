@@ -103,3 +103,23 @@ const book1 = createBook("Harry potter");
 const book2 = createBook("Lord of the Ring");
 console.log(book1)
 console.log(book2)
+
+
+// Prototypal Inheritance
+
+function Wolf2(name){
+    this.name = name;
+}
+
+Wolf2.prototype.howl = function(){
+    console.log(this.name + " hoooooowl")
+}
+function Dog2(name){
+    Wolf2.call(this, name +' the dog')
+}
+Dog2.prototype.woof = function(){
+    console.log(this.name + " woof woof")
+}
+
+const rufus2 = new Dog2("Rufus");
+console.log(rufus2.name)
