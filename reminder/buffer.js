@@ -15,3 +15,6 @@ console.log(buf4)
 console.log(buf5)
 console.log('//////')
 console.log(buf3.toString());
+
+const buf6 = Buffer.from('My name is Vincent')
+console.log(buf6)
