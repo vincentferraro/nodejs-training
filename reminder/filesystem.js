@@ -1,6 +1,11 @@
 const fs = require('fs');
-const {join }= require('path')
-const file = fs.readFileSync(__filename,'utf8')
-console.log(file)
 
-fs.writeFileSync(join(__dirname,'out2.txt'),file.toUpperCase())
+console.log('Before');
+fs.readFile(__filename,'utf8',(err,data)=>{
+    if(err){
+        console.error('Error')
+        return
+    }
+    console.log(data);
+})
+console.log('AFTER')
