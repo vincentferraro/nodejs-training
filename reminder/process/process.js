@@ -1,17 +1,17 @@
 'use strict'
 
-const { Transform }=require('stream')
+const { Readable, Writable,Transform, pipeline }=require('stream')
 process.stdin.setEncoding('utf8');
 process.stdout.setEncoding('utf8');
 
 
 let answers=[];
 
-const createTransform= (answer)=>{
+const createTransform= ()=>{
     return new Transform({
         transform(chunk, enc, next){
             const uppercase = chunk.toString().toUpperCase();
-            answer.push(uppercase);
+            
             next(null,uppercase)
         }
     })
@@ -28,9 +28,9 @@ function ask(i){
     process.stdout.write(questions[i] + ' >');
 }
 
-const transform = createTransform()
-process.stdin.on('data',(data)=>{
-    
+
+
+process.stdin.on('data',()=>{
     
     if(answers.length < questions.length){
         ask(answers.length)
@@ -42,3 +42,4 @@ process.stdin.on('data',(data)=>{
 )
 
 ask(0);
+
