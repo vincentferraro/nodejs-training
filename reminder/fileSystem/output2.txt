@@ -1,0 +1,46 @@
+
+const { readFile,writeFile } = require('fs').promises  
+const files = Array.from(Array(3)).fill(__filename)  
+const print = (contents) => {  
+  console.log(contents.toString())  
+}
+
+async function run () {  
+  const readers = files.map((file) => readFile(file))  
+console.log('READFERS',readers)
+  const data = await Promise.all(readers)  
+//   print(Buffer.concat(data))  
+    writeFile('output2.txt',Buffer.concat(data).toString())
+}
+
+run().catch(console.error)
+const { readFile,writeFile } = require('fs').promises  
+const files = Array.from(Array(3)).fill(__filename)  
+const print = (contents) => {  
+  console.log(contents.toString())  
+}
+
+async function run () {  
+  const readers = files.map((file) => readFile(file))  
+console.log('READFERS',readers)
+  const data = await Promise.all(readers)  
+//   print(Buffer.concat(data))  
+    writeFile('output2.txt',Buffer.concat(data).toString())
+}
+
+run().catch(console.error)
+const { readFile,writeFile } = require('fs').promises  
+const files = Array.from(Array(3)).fill(__filename)  
+const print = (contents) => {  
+  console.log(contents.toString())  
+}
+
+async function run () {  
+  const readers = files.map((file) => readFile(file))  
+console.log('READFERS',readers)
+  const data = await Promise.all(readers)  
+//   print(Buffer.concat(data))  
+    writeFile('output2.txt',Buffer.concat(data).toString())
+}
+
+run().catch(console.error)
