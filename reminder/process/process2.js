@@ -11,3 +11,6 @@ console.log(percentageUsageMemory.toFixed(2),' %');
 const percentageFreeMemory = ((os.totalmem()-os.freemem())/os.totalmem())*100;
 
 console.log(percentageFreeMemory.toFixed(2), ' %')
+
+console.log(os.arch());
+console.log(os.cpus());
